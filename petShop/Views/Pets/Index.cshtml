@@ -1,0 +1,60 @@
+@model List<PetModel>
+@{
+    ViewData["Title"] = "Página de pets";
+
+    var data = DateTime.Now.ToShortDateString();
+}
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a class="link-dark text-decoration-none"type="button" asp-area="" asp-controller="Home" asp-action="Index">Página inicial</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Cadastro</li>
+  </ol>
+</nav>
+
+<div class="text-center">
+    <h1 class="display-4">Bem vindo(a) a página de pets!</h1>
+    <h2 class="h2">Aqui você pode adicionar seu(s) amigo(s) patudo(s) e editar suas informações.</h2>
+    <br>
+    <table class="table table-dark table-striped" aria-describedby="desc">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Raça</th>
+                <th scope="col">Peso</th>
+                <th scope="col">Idade</th>
+                <th scope="col">Porte</th>
+                <th scope="col">Sexo</th>
+                <th scope="col"><a class="btn btn-outline-light me-md-2" role="button" asp-controller="Pets" asp-action="Criar">Adicionar pet</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                int i = 1;
+                foreach (PetModel pet in Model)
+                {
+                    
+                    <tr>
+                        <th scope="row">@i</th>
+                        <td>@pet.nome</td>
+                        <td>@pet.tipo</td>
+                        <td>@pet.raca</td>
+                        <td>@pet.peso</td>
+                        <td>@pet.idade.ToShortDateString()</td>
+                        <td>@pet.porte</td>
+                        <td>@pet.sexo</td>
+                        <td>
+                            <div role="group" aria-label="Basic example">
+                                <a role="button" class="btn btn-info" asp-controller="Pets" asp-route-id="@pet.idPet" asp-action="Editar">Editar</a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@pet.idPet" asp-controller="Pets" asp-action="VerDeletar">Deletar</a>
+                            </div>
+                        </td>
+                    </tr>
+                    i++;
+                }
+            }
+        </tbody>
+    </table>
+</div>

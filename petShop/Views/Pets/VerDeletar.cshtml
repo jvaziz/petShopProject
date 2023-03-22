@@ -1,0 +1,18 @@
+@model PetModel
+@{
+    ViewData["Title"] = "Verificação para deletar as informações do seu amigo";
+}
+
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a class="link-dark text-decoration-none"type="button" asp-area="" asp-controller="Home" asp-action="Index">Página inicial</a></li>
+    <li class="breadcrumb-item"><a class="link-dark text-decoration-none"type="button" asp-area="" asp-controller="Pets" asp-action="Index">Cadastro</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Verificar exclusão</li>
+  </ol>
+</nav>
+
+<div class="text-center">
+    <h1 class="display-4">Realmente deseja deletar as informações de @Model.nome?</h1><br>
+    <a role="button" class="btn btn-danger" asp-controller="Pets" asp-route-id="@Model.idPet" asp-action="Deletar">Deletar</a>
+    <a role="button" class="btn btn-info" asp-controller="Pets" asp-action="Index">Voltar</a>
+</div>

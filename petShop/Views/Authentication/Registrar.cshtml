@@ -1,0 +1,39 @@
+@model UserModel
+@{
+    Layout = "_LayoutDeslogado";
+    ViewData["title"] = "Registrar";
+}
+
+<img src="~/images/logo.jpeg" alt="Logo da Amigo Patudo" class="login-icon">
+
+<div class="text-center">
+    <h1 class="display-4">Registro</h1>
+</div>
+<br><br>
+
+<form asp-controller="Authentication" asp-action="Registrar" method="post">
+<div class="col g-3">
+    
+    <div class="row">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" class="form-control" placeholder="Insira o nome" asp-for="nome">
+    </div>
+<br>
+
+    <div class="row">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" placeholder="Insira o email" asp-for="email">
+    </div>
+<br>
+
+
+    <div class="row">
+        <label for="senha" class="form-label">Senha</label>
+        <input type="password" class="form-control" placeholder="Insira a senha" asp-for="senha">
+    </div>
+</div>
+<br>
+<button class="btn btn-success me-md-2" type="submit" asp-controller="Authentication" asp-action="Registrar">Cadastrar</button>
+<a class="btn btn-danger me-md-2" role="button" asp-controller="Pets" asp-action="Index">Voltar</a>
+
+</form>  

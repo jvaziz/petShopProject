@@ -1,0 +1,36 @@
+﻿@model List<ProductModel>; 
+@{
+    ViewData["Title"] = "Página inicial";
+    var hora = DateTime.Now.Hour;
+    var mensagem = "";
+    if (hora > 12 && hora < 18){
+        mensagem = "Boa tarde!";
+    }
+    else if (hora >= 18){
+        mensagem = "Boa noite!";
+    }
+    else{
+        mensagem = "Bom dia!";
+    }
+}
+
+<br><br>
+<div class="text-start">
+    <h3>Principais produtos</h3>
+    <br>
+    <ul class="list-group list-group-horizontal">
+        @if (Model != null && Model.Any()){
+        foreach(ProductModel prod in Model){
+        <li class="list-group-item"><img src="~/images/@prod.camProd" alt="@prod.altText"><br><p class="text-center">@prod.nomeProd</p></li>
+        }
+    }
+    </ul>
+    <br><br>
+    <ul class="list-group list-group-horizontal">
+        @if (Model != null && Model.Any()){
+        foreach(ProductModel prod in Model){
+        <li class="list-group-item"><img src="~/images/@prod.camProd" alt="@prod.altText"><br><p class="text-center">@prod.nomeProd</p></li>
+        }
+    }
+    </ul>
+</div>

@@ -1,0 +1,70 @@
+@model PetModel
+@{
+    ViewData["Title"] = "Cadastre seu amigo patudo!";
+}
+
+
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a class="link-dark text-decoration-none"type="button" asp-area="" asp-controller="Home" asp-action="Index">Página inicial</a></li>
+    <li class="breadcrumb-item"><a class="link-dark text-decoration-none"type="button" asp-area="" asp-controller="Pets" asp-action="Index">Cadastro</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Criar</li>
+  </ol>
+</nav>
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+    <br><br><br>
+</div>
+
+<form asp-controller="Pets" asp-action="Criar" method="post">
+<div class="row g-3">
+    <div class="col">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" class="form-control" placeholder="Insira o nome" asp-for="nome">
+    </div>
+    <div class="col">
+        <label for="tipo" class="form-label">Tipo</label>
+        <input type="text" class="form-control" placeholder="Insira o tipo" asp-for="tipo">
+    </div>
+    <div class="col">
+        <label for="raça" class="form-label">Raça</label>
+        <input type="text" class="form-control" placeholder="Insira a raça" asp-for="raca">
+    </div>
+    <div class="col">
+        <label for="peso" class="form-label">Peso</label>
+        <input type="text" class="form-control" placeholder="Insira o peso: 0,0" asp-for="peso">
+    </div>
+
+</div>
+<br>
+<div class="row g-3">
+    <div class="col">
+        <label for="idade" class="form-label">Idade</label>
+        <input type="date" class="form-control" placeholder="Insira a idade" asp-for="idade">
+    </div>
+    <div class="col">
+        <label for="porte" class="form-label">Porte</label>
+        <input type="text" class="form-control" placeholder="Insira o porte" asp-for="porte">
+    </div>
+    <div class="col">
+        <label for="sexo" class="form-label">Sexo</label>
+        <input type="text" class="form-control" placeholder="Insira o sexo" asp-for="sexo">
+    </div>
+    <div class="col">
+        <label for="tipoSangue" class="form-label">Tipo sanguíneo</label>
+        <input type="text" class="form-control" placeholder="Insira o tipo sanguíneo" asp-for="tipoSangue">
+    </div>
+</div>
+<br>
+<div class="text-center">
+    <div>
+        <label for="descricao" class="form-label">Descrição</label>
+        <input type="text" class="form-control" placeholder="Caso tenha, insira uma descrição de informações necessárias" 
+        asp-for="descricao">
+    </div>
+</div>
+<br>
+<button class="btn btn-success me-md-2" type="submit" asp-controller="Pets" asp-action="Criar">Cadastrar</button>
+<a class="btn btn-danger me-md-2" role="button" asp-controller="Pets" asp-action="Index">Voltar</a>
+
+</form>

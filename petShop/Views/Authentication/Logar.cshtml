@@ -1,0 +1,46 @@
+@model UserModel;
+@{
+    Layout = "_LayoutDeslogado";
+    ViewData["title"] = "Login";
+    var hora = DateTime.Now.Hour;
+    var mensagem = "";
+    if (hora > 12 && hora < 18){
+        mensagem = "Boa tarde!";
+    }
+    else if (hora >= 18){
+        mensagem = "Boa noite!";
+    }
+    else{
+        mensagem = "Bom dia!";
+    }
+}
+
+
+<img src="~/images/logo.jpeg" alt="Logo da Amigo Patudo" class="login-icon">
+
+<form asp-controller="Authentication" asp-action="Criar" method="post">
+    @if( TempData["LoginError"] != null) {
+        <div class="alert alert-danger" role="alert">
+            @TempData["LoginError"]
+        </div>
+    }
+    <div class="row">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" placeholder="Insira o email" asp-for="email">
+    </div>
+        <br>
+
+
+    <div class="row">
+        <label for="senha" class="form-label">Senha</label>
+        <input type="password" class="form-control" placeholder="Insira a senha" asp-for="senha">
+    </div>
+    
+    
+    <br>
+    <button class="btn btn-success me-md-2" type="submit" asp-controller="Authentication" asp-action="Logar">Logar</button>
+    <a class="btn btn-danger me-md-2" role="button" asp-controller="Pets" asp-action="Index">Voltar</a>
+
+
+</form>
+ 
